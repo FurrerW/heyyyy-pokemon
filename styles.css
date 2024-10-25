@@ -42,6 +42,15 @@ body {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 img {
   display: block;
   width: 100%;
@@ -53,27 +62,128 @@ header {
   padding-bottom: 4rem;
   padding-left: 0rem;
   padding-right: 0rem;
+  text-align: center;
 }
 
 .heading {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
+  text-align: center;
   margin: auto;
+  align-items: center;
 }
 
 .heading img {
-  width: 4rem;
+  width: clamp(30px, 6%, 60px);
   height: auto;
-  outline: solid 2px red;
+  min-width: 30px;
 }
 
 main {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4rem 2rem;
 }
 
+main img {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+main img:hover {
+  transform: scale(1.05);
+}
+
 footer {
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+}
+
+footer a {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  align-items: center;
+}
+
+footer img {
+  width: clamp(30px, 6%, 60px);
+  height: auto;
+  min-width: 30px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 999;
+  padding: 1rem;
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+}
+
+.modal img {
+  width: auto;
+  height: auto;
+  max-width: 95vw;
+  max-height: 95vh;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  color: white;
+  font-size: 3rem;
+  text-decoration: none;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #ccc;
+}
+
+@media screen and (max-width: 767px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body {
+    padding: 1rem;
+  }
 }
